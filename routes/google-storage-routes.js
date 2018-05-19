@@ -7,9 +7,9 @@ var db = require('../models');
 
 const googleCloudStorage = storage({
   projectId: "proj0524-birdapp",
-  keyFilename: process.env.GCS_KEYFILE || "keyfile.json"
+  // keyFilename: process.env.GCS_KEYFILE || "keyfile.json"
   // keyFilename: "keyfile.json"
-  
+  keyFilename: process.env.GCS_KEYFILE  
 });
 const upload = multer({
   storage: memoryStorage,
@@ -17,8 +17,9 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024
   }
 });
-var BucketName = process.env.GCS_BUCKET_NAME || keys.google_cloud_bucket_name;
+// var BucketName = process.env.GCS_BUCKET_NAME || keys.google_cloud_bucket_name;
 // var BucketName = keys.google_cloud_bucket_name;
+var BucketName = process.env.GCS_BUCKET_NAME;
 const bucket = googleCloudStorage.bucket(BucketName);
 
 module.exports = function (app){
