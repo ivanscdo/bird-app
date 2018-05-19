@@ -7,7 +7,7 @@ var keys = require("../config/keys");
 
 const googleCloudStorage = storage({
   projectId: "proj0524-birdapp",
-  keyFilename: "keyfile.json"
+  keyFilename: JSON.parse(process.env.GCS_KEYFILE)
 });
 const upload = multer({
   storage: memoryStorage,
@@ -15,7 +15,7 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024
   }
 });
-var BucketName = keys.google_cloud_bucket_name
+var BucketName = process.env.GCS_BUCKET_NAME
 const bucket = googleCloudStorage.bucket(BucketName);
 
 module.exports = function (app){
