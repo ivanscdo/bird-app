@@ -1,6 +1,6 @@
 const axios = require('axios')
 const fs = require('fs')
-const keys = require('../config/keys.js')
+// const keys = require('../config/keys.js')
 
 let imageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Harris%27s_Hawk_%28Parabuteo_unicinctus%29_3_of_4_in_set.jpg/220px-Harris%27s_Hawk_%28Parabuteo_unicinctus%29_3_of_4_in_set.jpg"
 

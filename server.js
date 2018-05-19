@@ -5,7 +5,7 @@ var cookieSession = require('cookie-session')
 var passport = require('passport');
 
 var passportSetup = require('./config/passport-setup.js');
-var keys = require('./config/keys.js')
+// var keys = require('./config/keys.js')
 
 
 var PORT = process.env.PORT || 3000;
@@ -36,7 +36,7 @@ require("./routes/google-storage-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force:true}).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on: http://localhost:"+PORT);
   });

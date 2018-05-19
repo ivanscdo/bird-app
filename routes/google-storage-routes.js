@@ -3,7 +3,7 @@ var express = require("express");
 var memoryStorage = multer.memoryStorage();
 var storage = require("@google-cloud/storage");
 var db = require('../models');
-var keys = require("../config/keys");
+// var keys = require("../config/keys");
 
 const googleCloudStorage = storage({
   projectId: "proj0524-birdapp",
