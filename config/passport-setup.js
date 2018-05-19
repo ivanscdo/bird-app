@@ -1,6 +1,6 @@
 var passport = require("passport");
 var GoogleStrategy = require("passport-google-oauth20");
-var keys = require("./keys.js");
+// var keys = require("./keys.js");
 var db = require('../models');
 
 passport.serializeUser((user, done) => {
@@ -15,8 +15,8 @@ passport.deserializeUser((id, done) => {
 
 passport.use(new GoogleStrategy({
     callbackURL: "/auth/google/callback",
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    clientID: process.env.GOOGLE_CLIENT_ID || keys.google.clientID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET || keys.google.clientSecret
   }, (accessToken, refreshToken, profile, done) => {
     db.User.findOne({
       where: {
