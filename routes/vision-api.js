@@ -4,7 +4,8 @@ const fs = require('fs')
 
 let imageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Harris%27s_Hawk_%28Parabuteo_unicinctus%29_3_of_4_in_set.jpg/220px-Harris%27s_Hawk_%28Parabuteo_unicinctus%29_3_of_4_in_set.jpg"
 
-const apiCall = 'https://vision.googleapis.com/v1/images:annotate?key=' + keys.googleVision.apiKey
+// const apiCall = 'https://vision.googleapis.com/v1/images:annotate?key=' + keys.googleVision.apiKey
+const apiCall = 'https://vision.googleapis.com/v1/images:annotate?key=' + process.env.GOOGLE_VISION_KEY
 module.exports.apiCall = apiCall
 
 // Remote Image
