@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
@@ -19,8 +21,9 @@ app.use(bodyParser.json());
 
 app.use(cookieSession({
 	maxAge: 24 * 60 * 60 * 1000,
-  keys: process.env.SESSION_COOKIE_KEY || [keys.session.cookieKey]
-	// keys: process.env.SESSION_COOKIE_KEY  
+  // keys: process.env.SESSION_COOKIE_KEY || keys.session.cookieKey
+  // keys: process.env.SESSION_COOKIE_KEY  
+  keys: [keys.session.cookieKey]  
 }))
 
 // For Passport
@@ -37,7 +40,7 @@ require("./routes/google-storage-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force:true}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on: http://localhost:"+PORT);
   });

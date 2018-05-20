@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var multer = require('multer');
 var express = require("express");
 var memoryStorage = multer.memoryStorage();
@@ -17,8 +19,8 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024
   }
 });
-// var BucketName = process.env.GCS_BUCKET_NAME || keys.google_cloud_bucket_name;
-var BucketName = keys.google_cloud_bucket_name;
+var BucketName = process.env.GCS_BUCKET_NAME || keys.google_cloud_bucket_name;
+// var BucketName = keys.google_cloud_bucket_name;
 // var BucketName = process.env.GCS_BUCKET_NAME;
 const bucket = googleCloudStorage.bucket(BucketName);
 
