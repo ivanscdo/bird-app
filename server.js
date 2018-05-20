@@ -5,7 +5,7 @@ var cookieSession = require('cookie-session')
 var passport = require('passport');
 
 var passportSetup = require('./config/passport-setup.js');
-// var keys = require('./config/keys.js')
+var keys = require('./config/keys.js')
 
 
 var PORT = process.env.PORT || 3000;
@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 
 app.use(cookieSession({
 	maxAge: 24 * 60 * 60 * 1000,
-  // keys: process.env.SESSION_COOKIE_KEY || [keys.session.cookieKey]
-	keys: process.env.SESSION_COOKIE_KEY  
+  keys: process.env.SESSION_COOKIE_KEY || [keys.session.cookieKey]
+	// keys: process.env.SESSION_COOKIE_KEY  
 }))
 
 // For Passport

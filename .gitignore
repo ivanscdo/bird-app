@@ -60,11 +60,14 @@ typings/
 # next.js build output
 .next
 
-# keys
-keys.js
+# keys-backup
+keys-backup.js
 
 #schema
 *.sql
 
 #keyfile for googleStorage
 keyfile.json
+
+#dotenv
+.env

@@ -3,13 +3,13 @@ var express = require("express");
 var memoryStorage = multer.memoryStorage();
 var storage = require("@google-cloud/storage");
 var db = require('../models');
-// var keys = require("../config/keys");
+var keys = require("../config/keys");
 
 const googleCloudStorage = storage({
   projectId: "proj0524-birdapp",
-  // keyFilename: process.env.GCS_KEYFILE || "keyfile.json"
+  keyFilename: process.env.GCS_KEYFILE || "keyfile.json"
   // keyFilename: "keyfile.json"
-  keyFilename: process.env.GCS_KEYFILE  
+  // keyFilename: process.env.GCS_KEYFILE  
 });
 const upload = multer({
   storage: memoryStorage,
@@ -18,8 +18,8 @@ const upload = multer({
   }
 });
 // var BucketName = process.env.GCS_BUCKET_NAME || keys.google_cloud_bucket_name;
-// var BucketName = keys.google_cloud_bucket_name;
-var BucketName = process.env.GCS_BUCKET_NAME;
+var BucketName = keys.google_cloud_bucket_name;
+// var BucketName = process.env.GCS_BUCKET_NAME;
 const bucket = googleCloudStorage.bucket(BucketName);
 
 module.exports = function (app){
