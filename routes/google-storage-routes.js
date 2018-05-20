@@ -9,9 +9,9 @@ var keys = require("../config/keys");
 
 const googleCloudStorage = storage({
   projectId: "proj0524-birdapp",
-  keyFilename: process.env.GCS_KEYFILE || "keyfile.json"
+  // keyFilename: process.env.GCS_KEYFILE || "keyfile.json"
   // keyFilename: "keyfile.json"
-  // keyFilename: process.env.GCS_KEYFILE  
+  keyFilename: JSON.parse(process.env.GCS_KEYFILE)
 });
 const upload = multer({
   storage: memoryStorage,
