@@ -71,3 +71,5 @@ keyfile.json
 
 #dotenv
 .env
+
+keyfile.js
