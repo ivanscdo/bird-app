@@ -11,7 +11,7 @@ const googleCloudStorage = storage({
   projectId: "proj0524-birdapp",
   // keyFilename: process.env.GCS_KEYFILE || "keyfile.json"
   // keyFilename: "keyfile.json"
-  keyFilename: "GCS_KEYFILE"
+  keyFilename: JSON.stringify(process.env.GCS_KEYFILE)
 });
 const upload = multer({
   storage: memoryStorage,
