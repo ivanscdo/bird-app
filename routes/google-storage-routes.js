@@ -13,6 +13,7 @@ const googleCloudStorage = storage({
   // keyFilename: "keyfile.json"
   // keyFilename: process.env.GCS_KEYFILE
   // keyFilename: "keyfile.js"  
+  credentials: JSON.parse(process.env.GCS_KEYFILE)
 });
 const upload = multer({
   storage: memoryStorage,

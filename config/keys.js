@@ -7,5 +7,6 @@ module.exports = {
 		cookieKey: process.env.SESSION_COOKIE_KEY
 	}, 
 	google_cloud_bucket_name: process.env.GCS_BUCKET_NAME, 
-	google_vision_key: process.env.GOOGLE_VISION_KEY
+	google_vision_key: process.env.GOOGLE_VISION_KEY,
+	// gcs_keyfile: JSON.parse(process.env.GCS_KEYFILE)
 };
