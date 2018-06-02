@@ -33,7 +33,19 @@ module.exports = function (app){
       res.status(400).send("No file uploaded.");
       return;
     }
-    var blob = bucket.file(req.file.originalname);
+    const blob = bucket.file(req.user.dataValues.id+"/"+Date.now()+"-"+req.file.originalname);
+    // console.log("req.file start");
+    // console.log(req.file.originalname);
+    // console.log("req.file end");
+    // console.log("date.now start");
+    // console.log(Date.now());
+    // console.log("date.now end");
+    // console.log("date+req start");
+    // console.log(req.file.originalname+Date.now());
+    // console.log("date+req end");
+    
+    
+
     const blobStream = blob.createWriteStream({
       metadata: {
         contentType: req.file.mimetype
@@ -48,6 +60,13 @@ module.exports = function (app){
     blobStream.on("finish", () => {
       
       const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+      // const renderURL = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+      // console.log("blob.metadata.timeCreated");
+      // console.log(blob.metadata.timeCreated);
+      // console.log("blob");
+      // console.log(blob);
+      
+      
   
       blob.makePublic().then(() => {
         db.Image.findOrCreate({
